@@ -29,6 +29,30 @@ Falscher Code der in der Insecure App war (nicht sicher)
     }
 ```
 
+Sicherer Code mit preparedStatemens
+
+```java
+        public int insert(News news) {
+        final String sql = "INSERT INTO news (posted, header, detail, author, is_admin_news) VALUES (?, ?, ?, ?, ?)";
+        int id = 0;
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setTimestamp(1, new java.sql.Timestamp(news.getPosted().getTime()));
+            pstmt.setString(2, news.getHeader());
+            pstmt.setString(3, news.getDetail());
+            pstmt.setString(4, news.getAuthor());
+            pstmt.setString(5, (news.getIsAdminNews() ? "1" : "0"));
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return id;
+
+    }
+```
+
 Die Sicherheitslücke im obigen Codeabschnitt besteht darin, dass Sie sich als Administrator anzeigen lassen können, indem Sie einfach den Eingabewert manipulieren. Das ist hier natürlich harmlos und ändert nur die Farbe der Nachrichtenanzeige, aber wenn das auf einer echten Seite der Fall wäre, könnten dies grosse Folgen haben. Um den Benutzer in diesem Fall als Administrator anzuzeigen, müssen Sie das Eingabefeld auf der News-Page anpassen und folgendes hineinschreiben:
 
 ## Verifikation
