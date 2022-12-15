@@ -12,7 +12,7 @@ In diesem Projekt habe ich gelernt, wie man PreparedStatements verwendet, um SQL
 ## Beschreibung
 Falscher Code der in der Insecure App war (nicht sicher)
 
-        java```
+        ```java
         public int insert(News news) {
         final String sql = "INSERT INTO news (posted, header, detail, author, is_admin_news) VALUES ('" + new java.sql.Timestamp(news.getPosted().getTime()) + "','" +          news.getHeader() + "','" + news.getDetail() + "','" + news.getAuthor() + "'," + (news.getIsAdminNews() ? "1" : "0") + ")";
         int id = 0;
