@@ -57,12 +57,12 @@ Die Sicherheitslücke im obigen Codeabschnitt besteht darin, dass Sie sich als A
 
 ## Verifikation
 
-✍️ Erklären Sie kurz und bündig, inwiefern die von Ihnen verwendeten Medien zeigen, was Sie gelernt haben.
+Ich habe mithilfe der Informationen aus dem Auftrag und den zur Verfügung gestellten Powerpoints, verstanden, wie man eine SQL-Interpreter Injection auf einer Webseite abfangen kann anhand von preparedStatements und somit seine Website sicherer gestalten kann.
 
 # Reflektion zum Arbeitsprozess
 
-👍 Überlegen Sie sich jeweils etwas, was gut an Ihrer Arbeit lief; 
+👍Ich habe den Auftrag besser verstanden als einige andere Aufträge in diesem Modul und die Anleitung/Aufgaben im Auftrag und der Powerpoint Präsentation waren Sehr verständlich.
 
-👎 und etwas, was nicht gut lief.
+👎Ich hatte sehr starke Konzentrationsprobleme da ich diese Aufträge wie auch viele andere Aufträge von Zuhause aus gelöst habe. Ich habe normalerweise schon Probleme mich zu konzentrieren Zuhause, aber durch die Baustelle, die zurzeit neben meinem Haus war, war es noch schwieriger.
 
-**VBV**: ✍️ Formulieren Sie davon ausgehend einen *handelbaren* Verbesserungsvorschlag.
+**VBV**: ✍️ Ich möchte meine Konzentration im Fernunterricht möglichst steigern und ich nehme mir vor im Präsenzunterricht alles zu geben, da es mir dort deutlich leichter fällt mich zu konzentrieren.
