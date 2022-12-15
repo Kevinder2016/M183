@@ -1,22 +1,32 @@
 # Lern-Bericht
-✍️ ggf. Ihr Gruppenname und Ihre Gruppenmitglieder
+von Kevin Frühwirth
 
 ## Einleitung
 
-✍️ Ein Satz, worum es in dem Projekt ging. Muss für einen externen Leser einfach zu verstehen sein.
+Das Modul 183 erklärt, wie Sie Ihre Website sichern können und Sicherheitslücken zu minimieren. Dieser Lernbericht erklärt, wie Sie Ihre Website vor SQL-Injection-Angriffen schützen.
 
 ## Was habe ich gelernt?
 
-✍️ Beschreiben Sie in einem Satz **eine** Sache, die Sie bei diesem Projekt gelernt haben und die Sie in diesem Lern-Bericht dokumentieren.
+In diesem Projekt habe ich gelernt, wie man PreparedStatements verwendet, um SQL-Interpreter-Injektionen abzufangen und so Websites davor zu schützen.
 
 ## Beschreibung
 
-✍️ Verwenden Sie drei verschiedene Medien, um zu zeigen, was Sie gelernt haben. Zum Beispiel:
+public int insert(News news) {
+        final String sql = "INSERT INTO news (posted, header, detail, author, is_admin_news) VALUES ('" + new java.sql.Timestamp(news.getPosted().getTime()) + "','" + news.getHeader() + "','" + news.getDetail() + "','" + news.getAuthor() + "'," + (news.getIsAdminNews() ? "1" : "0") + ")";
+        int id = 0;
 
-* Eine textliche Beschreibung
-* Ein deutliches, aussagekräftiges Bild oder eine kommentierte Bildschirm-Aufnahme
-* Ein gut dokumentierter Code-Fetzen
-* Ein Link zu einem *selbst aufgenommenen* youtube-Video oder `.gif`.
+        try (Statement stmt = DbAccess.getConnection().createStatement()) {
+            stmt.execute(sql);
+            id = stmt.getGeneratedKeys().getInt(1);
+        } catch (SQLException e) {
+            Logger.getLogger(NewsDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return id;
+
+    }
+
+Die Sicherheitslücke im obigen Codeabschnitt besteht darin, dass Sie sich als Administrator anzeigen lassen können, indem Sie einfach den Eingabewert manipulieren. Das ist hier natürlich harmlos und ändert nur die Farbe der Nachrichtenanzeige, aber wenn das auf einer echten Seite der Fall wäre, könnten dies grosse Folgen haben. Um den Benutzer in diesem Fall als Administrator anzuzeigen, müssen Sie das Eingabefeld auf der News-Page anpassen und folgendes hineinschreiben:
 
 ## Verifikation
 
