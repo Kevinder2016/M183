@@ -12,7 +12,7 @@ In diesem Projekt habe ich gelernt, wie man PreparedStatements verwendet, um SQL
 ## Beschreibung
 Falscher Code der in der Insecure App war (nicht sicher)
 
- 
+        java```
         public int insert(News news) {
         final String sql = "INSERT INTO news (posted, header, detail, author, is_admin_news) VALUES ('" + new java.sql.Timestamp(news.getPosted().getTime()) + "','" +          news.getHeader() + "','" + news.getDetail() + "','" + news.getAuthor() + "'," + (news.getIsAdminNews() ? "1" : "0") + ")";
         int id = 0;
@@ -27,6 +27,7 @@ Falscher Code der in der Insecure App war (nicht sicher)
         return id;
 
     }
+    ```
 
 Die Sicherheitslücke im obigen Codeabschnitt besteht darin, dass Sie sich als Administrator anzeigen lassen können, indem Sie einfach den Eingabewert manipulieren. Das ist hier natürlich harmlos und ändert nur die Farbe der Nachrichtenanzeige, aber wenn das auf einer echten Seite der Fall wäre, könnten dies grosse Folgen haben. Um den Benutzer in diesem Fall als Administrator anzuzeigen, müssen Sie das Eingabefeld auf der News-Page anpassen und folgendes hineinschreiben:
 
